@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "/grpc;grpc";
+
+service MutexService {
+  // Multicast request: clients send (timestamp, id) to all other clients
+  rpc Request (RequestMessage) returns (Empty);
+
+
+  // Unicast reply: clients send (timestamp, id) back to requester
+  rpc Reply (ReplyMessage) returns (Empty);
+
+}
+
+
+message RequestMessage {
+int32 timestamp = 1;
+int32 id = 2;
+}
+
+
+message ReplyMessage {
+int32 timestamp = 1;
+int32 id = 2;
+}
+
+
+message Empty {}
