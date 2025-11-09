@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"strconv"
 	"sync"
 
 	"google.golang.org/grpc"
@@ -52,10 +53,11 @@ func max(a, b int) int {
 }
 
 func main() {
-	spawnServer(1, ":5050")
-	spawnServer(2, ":5051")
-	spawnServer(3, ":5052")
+	go spawnServer(1, ":5050")
+	go spawnServer(2, ":5051")
+	go spawnServer(3, ":5052")
 
+	select {}
 }
 func spawnServer(server_id int, port string) {
 	lis, err := net.Listen("tcp", port)
@@ -65,14 +67,18 @@ func spawnServer(server_id int, port string) {
 
 	grpcServer := grpc.NewServer()
 
-	pb.RegisterMutexServiceServer(grpcServer, &mutexServer{
+	ms := &mutexServer{
 		id:        server_id,
 		timestamp: 1,
 		state:     "RELEASED",
-	})
+	}
+
+	pb.RegisterMutexServiceServer(grpcServer, ms)
 
 	fmt.Println("Mutex gRPC server running on port" + port)
+	fmt.Println("S"+strconv.Itoa(ms.id)+"-> Lamport:", ms.timestamp, "State:", ms.state)
 	if err := grpcServer.Serve(lis); err != nil {
 		log.Fatalf("Failed to serve: %v", err)
 	}
+	
 }
