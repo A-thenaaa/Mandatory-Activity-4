@@ -52,7 +52,6 @@ func (s *mutexServer) simulate() {
 	fmt.Printf("Server %d started simulation\n", s.id)
 	for {
 		if s.state == "RELEASED" {
-			log.Printf("[Server %d | STATE=%s | T=%d] Simulation tick", s.id, s.state, s.timestamp)
 			if rand.Intn(2) == 0 {
 				s.enter()
 			}
@@ -75,6 +74,7 @@ func (s *mutexServer) waitForPeers(total int) {
 
 func (s *mutexServer) enter() {
 	s.mu.Lock()
+	s.timestamp++
 	s.replyCount = 0
 	s.state = "WANTED"
 
@@ -92,12 +92,11 @@ func (s *mutexServer) enter() {
 	s.mu.Lock()
 	for peerID, client := range s.peers {
 		if int32(peerID) != s.id {
+			log.Printf("[Server %d | STATE=%s | T=%d] Sent request to %d", s.id, s.state, s.timestamp, peerID)
 			go func(c pb.MutexServiceClient, pid int32) {
 				_, err := c.Request(ctx, msg)
 				if err != nil {
 					log.Printf("[Server %d] Error sending request to peer %d: %v", s.id, pid, err)
-				} else {
-					log.Printf("[Server %d | STATE=%s | T=%d] Sent request to %d", s.id, s.state, s.timestamp, pid)
 				}
 			}(client, int32(peerID))
 		}
@@ -106,19 +105,20 @@ func (s *mutexServer) enter() {
 }
 
 func (s *mutexServer) Request(ctx context.Context, req *pb.RequestMessage) (*pb.Empty, error) {
-	fmt.Printf("Server %d Received af request from %d\n", s.id, req.Id)
+	fmt.Printf("Server %d Received a request from %d\n", s.id, req.Id)
 	log.Printf("[Server %d | STATE=%s | T=%d] Received REQUEST from %d (T=%d)", s.id, s.state, s.timestamp, req.Id, req.Timestamp)
 
 	s.mu.Lock()
 	defer s.mu.Unlock()
 
-	if s.state == "HELD" || (s.state == "WANTED" && (s.timestamp < req.Timestamp || req.Id > s.id)) {
+	if s.state == "HELD" || (s.state == "WANTED" &&
+		(s.timestamp < req.Timestamp || (s.timestamp == req.Timestamp && s.id < req.Id))) {
 		s.queue <- [2]int32{req.Timestamp, req.Id}
 		log.Printf("[Server %d | STATE=%s | T=%d] Queued request from %d", s.id, s.state, s.timestamp, req.Id)
 	} else {
 		msg := &pb.ReplyMessage{
-			Id:        s.id,        // your own server ID
-			Timestamp: s.timestamp, // your current Lamport timestamp
+			Id:        s.id,
+			Timestamp: s.timestamp,
 		}
 
 		s.peers[int(req.Id)].Reply(ctx, msg)
@@ -135,34 +135,45 @@ func (s *mutexServer) Reply(ctx context.Context, rep *pb.ReplyMessage) (*pb.Empt
 	log.Printf("[Server %d | STATE=%s | T=%d] Received REPLY from %d", s.id, s.state, s.timestamp, rep.Id)
 
 	s.mu.Lock()
-	defer s.mu.Unlock()
+
 	s.replyCount++
 
-	if s.replyCount == 2 {
+	okToEnter := false
+	if s.replyCount == 2 && s.state == "WANTED" {
+		okToEnter = true
 		s.state = "HELD"
+	}
 
+	s.mu.Unlock()
+
+	if okToEnter {
+		log.Printf("[Server %d] ENTERING critical section", s.id)
 		fmt.Println("Server", s.id, "has entered the critical section")
-		log.Printf("[Server %d | STATE=%s | T=%d] Entering critical section", s.id, s.state, s.timestamp)
 
-		time.Sleep(10 * time.Second) //sleeps for 10 seconds to emulate an action inside the critical section
+		time.Sleep(3 * time.Second)
 
+		log.Printf("[Server %d] EXITING critical section", s.id)
 		fmt.Println("Server", s.id, "left the critical section")
-		log.Printf("[Server %d | STATE=%s | T=%d] Exiting critical section", s.id, s.state, s.timestamp)
 
+		s.mu.Lock()
 		s.state = "RELEASED"
 
-		for len(s.queue) > 0 { // Release queue
+		s.timestamp++
+
+		for len(s.queue) > 0 {
 			req := <-s.queue
+
 			msg := &pb.ReplyMessage{
 				Id:        s.id,
 				Timestamp: s.timestamp,
 			}
+
 			go s.peers[int(req[1])].Reply(context.Background(), msg)
 			log.Printf("[Server %d] Sent queued REPLY to %d", s.id, req[1])
 		}
-	}
 
-	s.timestamp = max(s.timestamp, rep.Timestamp) + 1
+		s.mu.Unlock()
+	}
 
 	return &pb.Empty{}, nil
 }

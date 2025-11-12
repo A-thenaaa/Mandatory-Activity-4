@@ -1,54 +1,187 @@
-2025/11/11 19:36:59.658181 [Server 0 | STATE=RELEASED | T=1] Connected to peer :5051
-2025/11/11 19:36:59.658181 [Server 0 | STATE=RELEASED | T=1] Connected to peer :5052
-2025/11/11 19:36:59.658181 [Server 2 | STATE=RELEASED | T=1] Connected to peer :5051
-2025/11/11 19:36:59.659716 [Server 1 | STATE=RELEASED | T=1] Connected to peer :5050
-2025/11/11 19:36:59.659716 [Server 1 | STATE=RELEASED | T=1] Connected to peer :5052
-2025/11/11 19:36:59.659716 [Server 2 | STATE=RELEASED | T=1] Connected to peer :5050
-2025/11/11 19:36:59.757936 [Server 2] All peers connected, starting simulation
-2025/11/11 19:36:59.757936 [Server 1] All peers connected, starting simulation
-2025/11/11 19:36:59.757936 [Server 0] All peers connected, starting simulation
-2025/11/11 19:36:59.757936 [Server 2 | STATE=RELEASED | T=1] Simulation tick
-2025/11/11 19:36:59.757936 [Server 1 | STATE=RELEASED | T=1] Simulation tick
-2025/11/11 19:36:59.757936 [Server 0 | STATE=RELEASED | T=1] Simulation tick
-2025/11/11 19:36:59.758454 [Server 0 | STATE=WANTED | T=1] Wants to enter critical section
-2025/11/11 19:36:59.758454 [Server 1 | STATE=WANTED | T=1] Wants to enter critical section
-2025/11/11 19:36:59.759010 [Server 1 | STATE=WANTED | T=1] Received REQUEST from 0 (T=1)
-2025/11/11 19:36:59.759010 [Server 2 | STATE=RELEASED | T=1] Received REQUEST from 1 (T=1)
-2025/11/11 19:36:59.759605 [Server 0 | STATE=WANTED | T=1] Received REQUEST from 1 (T=1)
-2025/11/11 19:36:59.759605 [Server 0 | STATE=WANTED | T=1] Queued request from 1
-2025/11/11 19:36:59.759010 [Server 2 | STATE=RELEASED | T=1] Received REQUEST from 0 (T=1)
-2025/11/11 19:36:59.759605 [Server 0 | STATE=WANTED | T=2] Received REPLY from 1
-2025/11/11 19:36:59.759605 [Server 1 | STATE=WANTED | T=1] Sent REPLY to 0
-2025/11/11 19:36:59.759605 [Server 1 | STATE=WANTED | T=2] Received REPLY from 2
-2025/11/11 19:36:59.759605 [Server 1 | STATE=WANTED | T=1] Sent request to 0
-2025/11/11 19:36:59.759605 [Server 2 | STATE=RELEASED | T=1] Sent REPLY to 1
-2025/11/11 19:36:59.759605 [Server 0 | STATE=WANTED | T=3] Sent request to 1
-2025/11/11 19:36:59.760290 [Server 1 | STATE=WANTED | T=3] Sent request to 2
-2025/11/11 19:36:59.760290 [Server 0 | STATE=WANTED | T=3] Received REPLY from 2
-2025/11/11 19:36:59.760290 [Server 0 | STATE=HELD | T=3] Entering critical section
-2025/11/11 19:37:01.758705 [Server 2 | STATE=RELEASED | T=2] Simulation tick
-2025/11/11 19:37:03.759565 [Server 2 | STATE=RELEASED | T=2] Simulation tick
-2025/11/11 19:37:05.760068 [Server 2 | STATE=RELEASED | T=2] Simulation tick
-2025/11/11 19:37:09.760837 [Server 0 | STATE=HELD | T=3] Exiting critical section
-2025/11/11 19:37:09.760837 [Server 0] Sent queued REPLY to 1
-2025/11/11 19:37:09.761347 [Server 2 | STATE=RELEASED | T=2] Sent REPLY to 0
-2025/11/11 19:37:09.761347 [Server 1 | STATE=WANTED | T=3] Received REPLY from 0
-2025/11/11 19:37:09.761347 [Server 2 | STATE=WANTED | T=3] Wants to enter critical section
-2025/11/11 19:37:09.761347 [Server 1 | STATE=HELD | T=3] Entering critical section
-2025/11/11 19:37:09.761347 [Server 0 | STATE=RELEASED | T=4] Sent request to 2
-2025/11/11 19:37:09.761347 [Server 0 | STATE=RELEASED | T=4] Received REQUEST from 2 (T=3)
-2025/11/11 19:37:09.761347 [Server 1 | STATE=HELD | T=3] Received REQUEST from 2 (T=3)
-2025/11/11 19:37:09.761915 [Server 2 | STATE=WANTED | T=3] Received REPLY from 0
-2025/11/11 19:37:09.761915 [Server 0 | STATE=RELEASED | T=4] Sent REPLY to 2
-2025/11/11 19:37:09.761915 [Server 2 | STATE=WANTED | T=5] Sent request to 0
-2025/11/11 19:37:11.761074 [Server 0 | STATE=RELEASED | T=5] Simulation tick
-2025/11/11 19:37:11.761074 [Server 0 | STATE=WANTED | T=5] Wants to enter critical section
-2025/11/11 19:37:11.761584 [Server 1 | STATE=HELD | T=3] Received REQUEST from 0 (T=5)
-2025/11/11 19:37:11.761584 [Server 2 | STATE=WANTED | T=5] Received REQUEST from 0 (T=5)
-2025/11/11 19:37:11.762172 [Server 0 | STATE=WANTED | T=5] Received REPLY from 2
-2025/11/11 19:37:11.762172 [Server 2 | STATE=WANTED | T=5] Sent REPLY to 0
-2025/11/11 19:37:11.762172 [Server 0 | STATE=WANTED | T=6] Sent request to 2
-2025/11/11 19:37:19.761482 [Server 1 | STATE=HELD | T=3] Exiting critical section
-2025/11/11 19:37:19.762169 [Server 2 | STATE=WANTED | T=6] Received REPLY from 1
-2025/11/11 19:37:19.762169 [Server 2 | STATE=HELD | T=6] Entering critical section
-2025/11/11 19:37:19.763300 [Server 1 | STATE=RELEASED | T=4] Simulation tick
+2025/11/12 13:04:24.105625 [Server 2 | STATE=RELEASED | T=1] Connected to peer :5051
+2025/11/12 13:04:24.105625 [Server 0 | STATE=RELEASED | T=1] Connected to peer :5052
+2025/11/12 13:04:24.105996 [Server 0 | STATE=RELEASED | T=1] Connected to peer :5051
+2025/11/12 13:04:24.107173 [Server 1 | STATE=RELEASED | T=1] Connected to peer :5050
+2025/11/12 13:04:24.107173 [Server 1 | STATE=RELEASED | T=1] Connected to peer :5052
+2025/11/12 13:04:24.107173 [Server 2 | STATE=RELEASED | T=1] Connected to peer :5050
+2025/11/12 13:04:24.204959 [Server 2] All peers connected, starting simulation
+2025/11/12 13:04:24.207079 [Server 0] All peers connected, starting simulation
+2025/11/12 13:04:24.207079 [Server 1] All peers connected, starting simulation
+2025/11/12 13:04:24.207627 [Server 1 | STATE=WANTED | T=2] Wants to enter critical section
+2025/11/12 13:04:24.207627 [Server 1 | STATE=WANTED | T=2] Sent request to 0
+2025/11/12 13:04:24.207627 [Server 1 | STATE=WANTED | T=2] Sent request to 2
+2025/11/12 13:04:24.212521 [Server 2 | STATE=RELEASED | T=1] Received REQUEST from 1 (T=2)
+2025/11/12 13:04:24.213034 [Server 0 | STATE=RELEASED | T=1] Received REQUEST from 1 (T=2)
+2025/11/12 13:04:24.213034 [Server 1 | STATE=WANTED | T=2] Received REPLY from 2
+2025/11/12 13:04:24.213034 [Server 1 | STATE=WANTED | T=2] Received REPLY from 0
+2025/11/12 13:04:24.213034 [Server 1] ENTERING critical section
+2025/11/12 13:04:24.213034 [Server 2 | STATE=RELEASED | T=1] Sent REPLY to 1
+2025/11/12 13:04:26.205849 [Server 2 | STATE=WANTED | T=4] Wants to enter critical section
+2025/11/12 13:04:26.205849 [Server 2 | STATE=WANTED | T=4] Sent request to 1
+2025/11/12 13:04:26.205849 [Server 2 | STATE=WANTED | T=4] Sent request to 0
+2025/11/12 13:04:26.206421 [Server 0 | STATE=RELEASED | T=1] Received REQUEST from 2 (T=4)
+2025/11/12 13:04:26.206421 [Server 1 | STATE=HELD | T=2] Received REQUEST from 2 (T=4)
+2025/11/12 13:04:26.206421 [Server 1 | STATE=HELD | T=2] Queued request from 2
+2025/11/12 13:04:27.213339 [Server 1] EXITING critical section
+2025/11/12 13:04:27.213339 [Server 1] Sent queued REPLY to 2
+2025/11/12 13:04:27.213339 [Server 0 | STATE=RELEASED | T=1] Sent REPLY to 1
+2025/11/12 13:04:27.213339 [Server 2 | STATE=WANTED | T=4] Received REPLY from 1
+2025/11/12 13:04:27.214091 [Server 2 | STATE=WANTED | T=4] Received REPLY from 0
+2025/11/12 13:04:27.214091 [Server 2] ENTERING critical section
+2025/11/12 13:04:30.219468 [Server 2] EXITING critical section
+2025/11/12 13:04:30.219468 [Server 0 | STATE=RELEASED | T=3] Sent REPLY to 2
+2025/11/12 13:04:30.220557 [Server 0 | STATE=WANTED | T=6] Wants to enter critical section
+2025/11/12 13:04:30.220557 [Server 0 | STATE=WANTED | T=6] Sent request to 1
+2025/11/12 13:04:30.220557 [Server 0 | STATE=WANTED | T=6] Sent request to 2
+2025/11/12 13:04:30.220557 [Server 1 | STATE=RELEASED | T=6] Received REQUEST from 0 (T=6)
+2025/11/12 13:04:30.221247 [Server 2 | STATE=RELEASED | T=5] Received REQUEST from 0 (T=6)
+2025/11/12 13:04:30.221247 [Server 0 | STATE=WANTED | T=6] Received REPLY from 2
+2025/11/12 13:04:30.221690 [Server 0 | STATE=WANTED | T=6] Received REPLY from 1
+2025/11/12 13:04:30.221690 [Server 0] ENTERING critical section
+2025/11/12 13:04:30.221690 [Server 2 | STATE=RELEASED | T=5] Sent REPLY to 0
+2025/11/12 13:04:33.222507 [Server 0] EXITING critical section
+2025/11/12 13:04:33.222507 [Server 1 | STATE=RELEASED | T=6] Sent REPLY to 0
+2025/11/12 13:04:33.222507 [Server 1 | STATE=WANTED | T=8] Wants to enter critical section
+2025/11/12 13:04:33.222507 [Server 1 | STATE=WANTED | T=8] Sent request to 0
+2025/11/12 13:04:33.223153 [Server 1 | STATE=WANTED | T=8] Sent request to 2
+2025/11/12 13:04:33.223153 [Server 0 | STATE=RELEASED | T=7] Received REQUEST from 1 (T=8)
+2025/11/12 13:04:33.223153 [Server 2 | STATE=RELEASED | T=7] Received REQUEST from 1 (T=8)
+2025/11/12 13:04:33.223153 [Server 1 | STATE=WANTED | T=8] Received REPLY from 0
+2025/11/12 13:04:33.223153 [Server 1 | STATE=WANTED | T=8] Received REPLY from 2
+2025/11/12 13:04:33.223153 [Server 1] ENTERING critical section
+2025/11/12 13:04:33.223153 [Server 0 | STATE=RELEASED | T=7] Sent REPLY to 1
+2025/11/12 13:04:36.221724 [Server 0 | STATE=WANTED | T=10] Wants to enter critical section
+2025/11/12 13:04:36.221724 [Server 0 | STATE=WANTED | T=10] Sent request to 2
+2025/11/12 13:04:36.221724 [Server 0 | STATE=WANTED | T=10] Sent request to 1
+2025/11/12 13:04:36.221724 [Server 1 | STATE=HELD | T=8] Received REQUEST from 0 (T=10)
+2025/11/12 13:04:36.221724 [Server 1 | STATE=HELD | T=8] Queued request from 0
+2025/11/12 13:04:36.221724 [Server 2 | STATE=RELEASED | T=7] Received REQUEST from 0 (T=10)
+2025/11/12 13:04:36.223455 [Server 1] EXITING critical section
+2025/11/12 13:04:36.223455 [Server 1] Sent queued REPLY to 0
+2025/11/12 13:04:36.223455 [Server 2 | STATE=RELEASED | T=7] Sent REPLY to 1
+2025/11/12 13:04:36.223455 [Server 0 | STATE=WANTED | T=10] Received REPLY from 1
+2025/11/12 13:04:36.223455 [Server 2 | STATE=WANTED | T=10] Wants to enter critical section
+2025/11/12 13:04:36.223979 [Server 0 | STATE=WANTED | T=10] Received REPLY from 2
+2025/11/12 13:04:36.223979 [Server 0] ENTERING critical section
+2025/11/12 13:04:37.224081 [Server 1 | STATE=WANTED | T=13] Wants to enter critical section
+2025/11/12 13:04:37.224081 [Server 1 | STATE=WANTED | T=13] Sent request to 0
+2025/11/12 13:04:37.224081 [Server 1 | STATE=WANTED | T=13] Sent request to 2
+2025/11/12 13:04:37.224594 [Server 2 | STATE=WANTED | T=10] Received REQUEST from 1 (T=13)
+2025/11/12 13:04:37.224594 [Server 0 | STATE=HELD | T=10] Received REQUEST from 1 (T=13)
+2025/11/12 13:04:37.224594 [Server 0 | STATE=HELD | T=10] Queued request from 1
+2025/11/12 13:04:39.224628 [Server 0] EXITING critical section
+2025/11/12 13:04:39.224628 [Server 0] Sent queued REPLY to 1
+2025/11/12 13:04:39.224628 [Server 2 | STATE=WANTED | T=10] Sent REPLY to 0
+2025/11/12 13:04:39.225354 [Server 2 | STATE=WANTED | T=11] Sent request to 0
+2025/11/12 13:04:39.225354 [Server 2 | STATE=WANTED | T=11] Sent request to 1
+2025/11/12 13:04:39.225354 [Server 1 | STATE=WANTED | T=13] Received REPLY from 0
+2025/11/12 13:04:39.225354 [Server 2 | STATE=WANTED | T=11] Queued request from 1
+2025/11/12 13:04:39.225354 [Server 0 | STATE=RELEASED | T=15] Received REQUEST from 2 (T=10)
+2025/11/12 13:04:39.225354 [Server 1 | STATE=WANTED | T=13] Received REQUEST from 2 (T=10)
+2025/11/12 13:04:39.225354 [Server 2 | STATE=WANTED | T=14] Received REPLY from 0
+2025/11/12 13:04:39.225924 [Server 2 | STATE=WANTED | T=14] Received REPLY from 1
+2025/11/12 13:04:39.225924 [Server 2] ENTERING critical section
+2025/11/12 13:04:39.225924 [Server 0 | STATE=RELEASED | T=15] Sent REPLY to 2
+2025/11/12 13:04:40.222513 [Server 0 | STATE=WANTED | T=17] Wants to enter critical section
+2025/11/12 13:04:40.222513 [Server 0 | STATE=WANTED | T=17] Sent request to 2
+2025/11/12 13:04:40.222513 [Server 0 | STATE=WANTED | T=17] Sent request to 1
+2025/11/12 13:04:40.223075 [Server 1 | STATE=WANTED | T=13] Received REQUEST from 0 (T=17)
+2025/11/12 13:04:40.223075 [Server 2 | STATE=HELD | T=14] Received REQUEST from 0 (T=17)
+2025/11/12 13:04:40.223075 [Server 2 | STATE=HELD | T=14] Queued request from 0
+2025/11/12 13:04:42.226262 [Server 2] EXITING critical section
+2025/11/12 13:04:42.226262 [Server 2] Sent queued REPLY to 1
+2025/11/12 13:04:42.226262 [Server 2] Sent queued REPLY to 0
+2025/11/12 13:04:42.226262 [Server 1 | STATE=WANTED | T=13] Sent REPLY to 2
+2025/11/12 13:04:42.226262 [Server 1 | STATE=WANTED | T=14] Received REPLY from 2
+2025/11/12 13:04:42.226262 [Server 0 | STATE=WANTED | T=17] Received REPLY from 2
+2025/11/12 13:04:42.226262 [Server 1] ENTERING critical section
+2025/11/12 13:04:42.226262 [Server 1 | STATE=HELD | T=14] Queued request from 0
+2025/11/12 13:04:43.226314 [Server 2 | STATE=WANTED | T=20] Wants to enter critical section
+2025/11/12 13:04:43.226314 [Server 2 | STATE=WANTED | T=20] Sent request to 1
+2025/11/12 13:04:43.226314 [Server 2 | STATE=WANTED | T=20] Sent request to 0
+2025/11/12 13:04:43.226874 [Server 1 | STATE=HELD | T=18] Received REQUEST from 2 (T=20)
+2025/11/12 13:04:43.226874 [Server 0 | STATE=WANTED | T=17] Received REQUEST from 2 (T=20)
+2025/11/12 13:04:43.226874 [Server 0 | STATE=WANTED | T=17] Queued request from 2
+2025/11/12 13:04:43.226874 [Server 1 | STATE=HELD | T=18] Queued request from 2
+2025/11/12 13:04:45.226930 [Server 1] EXITING critical section
+2025/11/12 13:04:45.226930 [Server 1] Sent queued REPLY to 0
+2025/11/12 13:04:45.226930 [Server 1] Sent queued REPLY to 2
+2025/11/12 13:04:45.227682 [Server 2 | STATE=WANTED | T=20] Received REPLY from 1
+2025/11/12 13:04:45.227682 [Server 0 | STATE=WANTED | T=21] Received REPLY from 1
+2025/11/12 13:04:45.227682 [Server 0] ENTERING critical section
+2025/11/12 13:04:48.228045 [Server 0] EXITING critical section
+2025/11/12 13:04:48.228045 [Server 0] Sent queued REPLY to 2
+2025/11/12 13:04:48.228728 [Server 2 | STATE=WANTED | T=20] Received REPLY from 0
+2025/11/12 13:04:48.228728 [Server 2] ENTERING critical section
+2025/11/12 13:04:49.226546 [Server 1 | STATE=WANTED | T=23] Wants to enter critical section
+2025/11/12 13:04:49.226546 [Server 1 | STATE=WANTED | T=23] Sent request to 0
+2025/11/12 13:04:49.226546 [Server 1 | STATE=WANTED | T=23] Sent request to 2
+2025/11/12 13:04:49.227244 [Server 2 | STATE=HELD | T=20] Received REQUEST from 1 (T=23)
+2025/11/12 13:04:49.227244 [Server 2 | STATE=HELD | T=20] Queued request from 1
+2025/11/12 13:04:49.227244 [Server 0 | STATE=RELEASED | T=22] Received REQUEST from 1 (T=23)
+2025/11/12 13:04:49.227244 [Server 1 | STATE=WANTED | T=23] Received REPLY from 0
+2025/11/12 13:04:49.227244 [Server 0 | STATE=RELEASED | T=22] Sent REPLY to 1
+2025/11/12 13:04:51.229070 [Server 2] EXITING critical section
+2025/11/12 13:04:51.229070 [Server 2] Sent queued REPLY to 1
+2025/11/12 13:04:51.229070 [Server 1 | STATE=WANTED | T=23] Received REPLY from 2
+2025/11/12 13:04:51.229070 [Server 1] ENTERING critical section
+2025/11/12 13:04:52.225191 [Server 0 | STATE=WANTED | T=25] Wants to enter critical section
+2025/11/12 13:04:52.225191 [Server 0 | STATE=WANTED | T=25] Sent request to 2
+2025/11/12 13:04:52.225191 [Server 0 | STATE=WANTED | T=25] Sent request to 1
+2025/11/12 13:04:52.225710 [Server 1 | STATE=HELD | T=23] Received REQUEST from 0 (T=25)
+2025/11/12 13:04:52.225710 [Server 1 | STATE=HELD | T=23] Queued request from 0
+2025/11/12 13:04:52.225710 [Server 2 | STATE=RELEASED | T=25] Received REQUEST from 0 (T=25)
+2025/11/12 13:04:52.226497 [Server 0 | STATE=WANTED | T=25] Received REPLY from 2
+2025/11/12 13:04:52.226497 [Server 2 | STATE=RELEASED | T=25] Sent REPLY to 0
+2025/11/12 13:04:53.228629 [Server 2 | STATE=WANTED | T=27] Wants to enter critical section
+2025/11/12 13:04:53.228629 [Server 2 | STATE=WANTED | T=27] Sent request to 1
+2025/11/12 13:04:53.228629 [Server 2 | STATE=WANTED | T=27] Sent request to 0
+2025/11/12 13:04:53.229351 [Server 1 | STATE=HELD | T=26] Received REQUEST from 2 (T=27)
+2025/11/12 13:04:53.229351 [Server 1 | STATE=HELD | T=26] Queued request from 2
+2025/11/12 13:04:53.229351 [Server 0 | STATE=WANTED | T=25] Received REQUEST from 2 (T=27)
+2025/11/12 13:04:53.229351 [Server 0 | STATE=WANTED | T=25] Queued request from 2
+2025/11/12 13:04:54.229589 [Server 1] EXITING critical section
+2025/11/12 13:04:54.229589 [Server 1] Sent queued REPLY to 0
+2025/11/12 13:04:54.229589 [Server 1] Sent queued REPLY to 2
+2025/11/12 13:04:54.230352 [Server 0 | STATE=WANTED | T=28] Received REPLY from 1
+2025/11/12 13:04:54.230352 [Server 0] ENTERING critical section
+2025/11/12 13:04:54.230352 [Server 2 | STATE=WANTED | T=27] Received REPLY from 1
+2025/11/12 13:04:55.227343 [Server 1 | STATE=WANTED | T=30] Wants to enter critical section
+2025/11/12 13:04:55.227343 [Server 1 | STATE=WANTED | T=30] Sent request to 0
+2025/11/12 13:04:55.227343 [Server 1 | STATE=WANTED | T=30] Sent request to 2
+2025/11/12 13:04:55.227852 [Server 2 | STATE=WANTED | T=27] Received REQUEST from 1 (T=30)
+2025/11/12 13:04:55.227852 [Server 2 | STATE=WANTED | T=27] Queued request from 1
+2025/11/12 13:04:55.227852 [Server 0 | STATE=HELD | T=28] Received REQUEST from 1 (T=30)
+2025/11/12 13:04:55.227852 [Server 0 | STATE=HELD | T=28] Queued request from 1
+2025/11/12 13:04:57.231023 [Server 0] EXITING critical section
+2025/11/12 13:04:57.231023 [Server 0] Sent queued REPLY to 2
+2025/11/12 13:04:57.231023 [Server 0] Sent queued REPLY to 1
+2025/11/12 13:04:57.231716 [Server 1 | STATE=WANTED | T=30] Received REPLY from 0
+2025/11/12 13:04:57.231716 [Server 2 | STATE=WANTED | T=31] Received REPLY from 0
+2025/11/12 13:04:57.231716 [Server 2] ENTERING critical section
+2025/11/12 13:04:58.225953 [Server 0 | STATE=WANTED | T=33] Wants to enter critical section
+2025/11/12 13:04:58.225953 [Server 0 | STATE=WANTED | T=33] Sent request to 2
+2025/11/12 13:04:58.225953 [Server 0 | STATE=WANTED | T=33] Sent request to 1
+2025/11/12 13:04:58.225953 [Server 2 | STATE=HELD | T=31] Received REQUEST from 0 (T=33)
+2025/11/12 13:04:58.225953 [Server 2 | STATE=HELD | T=31] Queued request from 0
+2025/11/12 13:04:58.225953 [Server 1 | STATE=WANTED | T=30] Received REQUEST from 0 (T=33)
+2025/11/12 13:04:58.225953 [Server 1 | STATE=WANTED | T=30] Queued request from 0
+2025/11/12 13:05:00.231994 [Server 2] EXITING critical section
+2025/11/12 13:05:00.231994 [Server 2] Sent queued REPLY to 1
+2025/11/12 13:05:00.231994 [Server 2] Sent queued REPLY to 0
+2025/11/12 13:05:00.231994 [Server 1 | STATE=WANTED | T=34] Received REPLY from 2
+2025/11/12 13:05:00.231994 [Server 0 | STATE=WANTED | T=33] Received REPLY from 2
+2025/11/12 13:05:00.231994 [Server 1] ENTERING critical section
+2025/11/12 13:05:01.230188 [Server 2 | STATE=WANTED | T=36] Wants to enter critical section
+2025/11/12 13:05:01.230188 [Server 2 | STATE=WANTED | T=36] Sent request to 1
+2025/11/12 13:05:01.230876 [Server 2 | STATE=WANTED | T=36] Sent request to 0
+2025/11/12 13:05:01.230876 [Server 1 | STATE=HELD | T=34] Received REQUEST from 2 (T=36)
+2025/11/12 13:05:01.230876 [Server 0 | STATE=WANTED | T=33] Received REQUEST from 2 (T=36)
+2025/11/12 13:05:01.231445 [Server 0 | STATE=WANTED | T=33] Queued request from 2
+2025/11/12 13:05:01.231445 [Server 1 | STATE=HELD | T=34] Queued request from 2
+2025/11/12 13:05:03.232338 [Server 1] EXITING critical section
+2025/11/12 13:05:03.232338 [Server 1] Sent queued REPLY to 0
+2025/11/12 13:05:03.232338 [Server 1] Sent queued REPLY to 2
+2025/11/12 13:05:03.232848 [Server 2 | STATE=WANTED | T=36] Received REPLY from 1
+2025/11/12 13:05:03.232848 [Server 0 | STATE=WANTED | T=37] Received REPLY from 1
+2025/11/12 13:05:03.232848 [Server 0] ENTERING critical section
