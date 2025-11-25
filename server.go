@@ -3,11 +3,13 @@ package main
 import (
 	pb "Mandatory-Activity-4/grpc"
 	"context"
+	"flag"
 	"fmt"
 	"log"
 	"math/rand"
 	"net"
-	"os"
+	"strconv"
+	"strings"
 	"sync"
 	"time"
 
@@ -68,7 +70,7 @@ func (s *mutexServer) waitForPeers(total int) {
 			return
 		}
 		s.mu.Unlock()
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(3 * time.Second)
 	}
 }
 
@@ -186,16 +188,24 @@ func max(a, b int32) int32 {
 }
 
 func main() {
-	logFile, err := os.OpenFile("server.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
-	if err != nil {
-		log.Fatalf("Failed to open log file: %v", err)
-	}
-	log.SetOutput(logFile)
-	log.SetFlags(log.Ldate | log.Ltime | log.Lmicroseconds)
+	server_id := flag.Int("id", 0, "Server ID number (0 or 1)")
+	port := flag.String("port", ":5050", "Port to listen on, e.g. :5050")
+	peer := flag.String("peer", "", "Peer port, e.g. :5051")
+	peerIDs := flag.String("peerid", "", "ID's of other peers")
 
-	go spawnServer(0, ":5050", []string{":5051", ":5052"}, []int{1, 2})
-	go spawnServer(1, ":5051", []string{":5050", ":5052"}, []int{0, 2})
-	go spawnServer(2, ":5052", []string{":5050", ":5051"}, []int{0, 1})
+	flag.Parse()
+
+	if *peer == "" {
+		log.Fatalf("You must specify --peer")
+	}
+
+	peerPorts := strings.Split(*peer, ",")
+	peers := strings.Split(*peerIDs, ",")
+	id1, _ := strconv.Atoi(peers[0])
+	id2, _ := strconv.Atoi(peers[1])
+	peerids := []int{id1, id2}
+
+	go spawnServer(*server_id, *port, peerPorts, peerids)
 
 	select {}
 }
